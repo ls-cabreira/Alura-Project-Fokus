@@ -33,13 +33,11 @@ function alterarContexto(contexto, lista) {
         banner.setAttribute('src', '/imagens/descanso-curto.png');
         titulo.innerHTML = `Que tal dar uma respirada?<br><strong class="app__title-strong">Faça uma pausa curta!</strong>`;
         tempoSegundos = 300;
-        estadoDescanso();
     } else {
         html.setAttribute(atributo, 'descanso-longo')
         banner.setAttribute('src', '/imagens/descanso-longo.png')
         titulo.innerHTML = `Hora de voltar à superfície.<br><strong class="app__title-strong">Faça uma pausa longa.</strong>`;
         tempoSegundos = 900;
-        estadoDescanso();
     }
 }
 
