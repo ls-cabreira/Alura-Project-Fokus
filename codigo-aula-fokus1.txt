@@ -17,7 +17,6 @@ const audioStart = new Audio('/sons/play.wav');
 const audioPause = new Audio('/sons/pause.mp3');
 const audioTimeout = new Audio('/sons/time-alert.mp3');
 
-
 function alterarContexto(contexto, lista) {
     lista.forEach((button) => {
         button.classList.remove('active');
