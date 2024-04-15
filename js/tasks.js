@@ -14,7 +14,7 @@ let selectedTaskLi = null;
 const removeCompleteButton = document.getElementById('btn-remover-concluidas');
 const removeAllButton = document.getElementById('btn-remover-todas');
 
-export function taskList() {
+export function initTaskList() {
     addTaskButton.addEventListener('click', () => {
         taskForm.classList.toggle('hidden');
     })
@@ -126,35 +126,6 @@ function taskSelection(object, li) {
     li.classList.add('app__section-task-list-item-active');
 }
 
-function clearForm() {
-    taskForm.classList.add('hidden');
-    textarea.value = '';
-}
-
-function taskRemove() {
-    removeCompleteButton.addEventListener('click', () => {
-        document.querySelectorAll('.app__section-task-list-item-complete')
-        .forEach(element => {
-            element.remove();
-        })
-
-        taskArray = taskArray.filter(element => !element.complete);
-
-        updateStorage();
-    })
-
-    removeAllButton.addEventListener('click', () => {
-        document.querySelectorAll('.app__section-task-list-item')
-        .forEach(element => {
-            element.remove();
-        })
-
-        taskArray = [];
-
-        updateStorage();
-    })
-}
-
 function completeTaskListener() {
     document.addEventListener('concluded', () => {
         if (selectedTaskLi && selectedTaskObject) {
@@ -166,4 +137,32 @@ function completeTaskListener() {
             updateStorage();
         }
     });
+}
+
+function taskRemove() {
+    removeCompleteButton.addEventListener('click', () => {
+        clearUl('.app__section-task-list-item-complete');
+
+        taskArray = taskArray.filter(element => !element.complete);
+        updateStorage();
+    })
+
+    removeAllButton.addEventListener('click', () => {
+        clearUl('.app__section-task-list-item');
+
+        taskArray = [];
+        updateStorage();
+    })
+}
+
+function clearForm() {
+    taskForm.classList.add('hidden');
+    textarea.value = '';
+}
+
+function clearUl (selector) {
+    document.querySelectorAll(selector)
+    .forEach(element => {
+        element.remove();
+    })
 }
