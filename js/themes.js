@@ -1,5 +1,5 @@
 export const contextButtons = document.querySelectorAll('.app__card-button');
-const html = document.querySelector('html');
+export const html = document.querySelector('html');
 const appImage = document.querySelector('.app__image');
 const title = document.querySelector('.app__title');
 

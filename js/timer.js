@@ -1,4 +1,4 @@
-import { contextButtons } from "./themes.js";
+import { contextButtons, html } from "./themes.js";
 
 let seconds = 1500;
 let idInterval = null;
@@ -38,6 +38,7 @@ function timerController() {
         if (seconds == 0) {
             stop();
             alertAudio.play();
+            completeTaskEvent();
             return
         }
         seconds--;
@@ -74,4 +75,11 @@ function timerSwitch() {
             timeDisplay();
         })
     })
+}
+
+function completeTaskEvent() {
+    if (html.getAttribute('data-contexto') == 'foco') {
+        const event = new CustomEvent('concluded');
+        document.dispatchEvent(event);
+    }
 }
